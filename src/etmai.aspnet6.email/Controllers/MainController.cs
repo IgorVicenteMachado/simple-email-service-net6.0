@@ -17,7 +17,7 @@ namespace etmai.aspnet6.email.Controllers
 
         protected ActionResult CustomResponse(object obj = null)
         {
-            if(obj.GetType() == typeof(ModelStateDictionary))
+            if(obj != null && obj.GetType() == typeof(ModelStateDictionary))
             {
                 ModelStateDictionary modelstate = (ModelStateDictionary)obj;
                 var erros = modelstate.Values.SelectMany(e => e.Errors);

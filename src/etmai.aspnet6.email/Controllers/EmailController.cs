@@ -27,7 +27,7 @@ namespace etmai.aspnet6.email.Controllers
             if (_cache.TryGetValue(viewModel.Email, out DuvidaViewModel vm))
             {
                 var elapsedTime = viewModel.Date - vm.Date;
-                if (elapsedTime.Minutes <= 5)
+                if (elapsedTime.Minutes < 10)
                 {
                     AddNotification("Você enviou uma mensagem recentemente! Aguarde alguns minutos e tente novamente.");
                     return CustomResponse();

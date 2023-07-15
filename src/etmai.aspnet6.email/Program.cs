@@ -7,9 +7,10 @@ builder.LoadSecretsValues();
 builder.Services.LoadDependencyInjection();
 builder.Services.AddMemoryCache();
 builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
-builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCorsConfiguration();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -20,8 +21,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
+app.UseCorsConfiguration();
 
 app.MapControllers();
 
